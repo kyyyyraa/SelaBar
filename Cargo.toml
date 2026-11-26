@@ -1,0 +1,110 @@
+[package]
+name = "selabar"
+version = "0.2.0"
+description = "SelaBar — Dynamic Notch & Desktop AI Companion"
+authors = ["SelaBar"]
+edition = "2021"
+
+[lib]
+name = "selabar_lib"
+crate-type = ["rlib"]
+
+[[bin]]
+name = "SelaBar"
+path = "src/main.rs"
+
+[[bin]]
+name = "SelaBar-Setup"
+path = "src/bin/setup.rs"
+
+[features]
+default = []
+setup-payload = []
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.13", default-features = false, features = ["native-tls", "json"] }
+rusqlite = { version = "0.41.1", features = ["bundled"] }
+cpal = "0.15"
+base64 = "0.22"
+flate2 = "1"
+chrono = { version = "0.4", features = ["clock"] }
+regex = "1"
+crossbeam-channel = "0.5"
+http = "1"
+native-tls = "0.2"
+tungstenite = "0.26"
+symphonia = { version = "0.5", default-features = false, features = ["mp3"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "bmp", "webp", "gif"] }
+resvg = { version = "0.48", default-features = false, features = ["text", "system-fonts"] }
+usvg = { version = "0.48", default-features = false, features = ["text", "system-fonts"] }
+tiny-skia = "0.12"
+windows = { version = "0.61", features = [
+    "Foundation",
+    "Foundation_Collections",
+    "Graphics_Imaging",
+    "Media_Control",
+    "Media_Core",
+    "Media_Ocr",
+    "Media_SpeechSynthesis",
+    "Storage_Streams",
+    "Win32_Foundation",
+    "Win32_Graphics_Direct2D",
+    "Win32_Graphics_Direct2D_Common",
+    "Win32_Graphics_DirectWrite",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_Graphics_Gdi",
+    "Win32_Graphics_Imaging",
+    "Win32_Media_Audio",
+    "Win32_Media_Audio_Endpoints",
+    "Win32_Media_MediaFoundation",
+    "Win32_Media_Multimedia",
+    "Win32_Networking_NetworkListManager",
+    "Win32_Security_Cryptography",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_DataExchange",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Memory",
+    "Win32_System_Ole",
+    "Win32_System_Power",
+    "Win32_System_ProcessStatus",
+    "Win32_System_Registry",
+    "Win32_System_Shutdown",
+    "Win32_System_SystemInformation",
+    "Win32_System_SystemServices",
+    "Win32_System_Threading",
+    "Win32_System_Variant",
+    "Win32_UI_Accessibility",
+    "Win32_UI_Controls_Dialogs",
+    "Win32_UI_HiDpi",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_Notifications",
+    "Win32_UI_Shell",
+    "Win32_UI_Shell_Common",
+    "Win32_UI_Shell_PropertiesSystem",
+    "Win32_UI_WindowsAndMessaging",
+] }
+windows-core = "0.61.2"
+windows-numerics = "0.2.0"
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_Graphics_Gdi",
+    "Win32_Media_Audio",
+    "Win32_System_DataExchange",
+    "Win32_System_Memory",
+    "Win32_System_Ole",
+    "Win32_System_Registry",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = false

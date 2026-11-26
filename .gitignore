@@ -1,0 +1,26 @@
+# Rust build cache & artifacts (kept on disk, never committed)
+target/
+dist/
+*.exe
+*.pdb
+*.res
+*.bin
+*.onnx
+*.ggml
+whisper-cuda/
+whisper-cpu/
+models/
+desknotch-models/
+_whisper_*
+
+# Local cargo config (machine-specific jobs limit)
+.cargo/
+
+# Scratch / probe output
+chk*.txt
+*.log
+wpn_probe*
+
+# OS / editor
+Thumbs.db
+.DS_Store
